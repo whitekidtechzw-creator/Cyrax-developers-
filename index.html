@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CYRAX DEVELOPERS — Engineering Tomorrow, Today.</title>
+<meta name="description" content="CYRAX DEVELOPERS is a team of developers, programmers and digital innovators building software, Android apps, bots, AI and next-generation technology.">
+<meta name="theme-color" content="#05060d"><meta property="og:title" content="CYRAX DEVELOPERS — Engineering Tomorrow, Today."><meta property="og:description" content="Elite developers building powerful software, apps, bots and AI. Join the team."><meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M32 3 57 17.5v29L32 61 7 46.5v-29z' fill='%23070a18' stroke='%232d8cff' stroke-width='4'/%3E%3Cpath d='M42 22a15 15 0 1 0 0 20' fill='none' stroke='%2300e5ff' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"CYRAX DEVELOPERS","slogan":"Engineering Tomorrow, Today.","sameAs":["https://github.com/whitekid-tech","https://t.me/whitekid01"]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#00e5ff"/><stop offset=".55" stop-color="#2d8cff"/><stop offset="1" stop-color="#8a5cff"/></linearGradient></defs>
+<symbol id="logo" viewBox="0 0 64 64"><path d="M32 3 57 17.5v29L32 61 7 46.5v-29z" fill="none" stroke="url(#lg)" stroke-width="3"/><path d="M42 22a15 15 0 1 0 0 20" fill="none" stroke="url(#lg)" stroke-width="5" stroke-linecap="round"/><path d="M30 28l6 4-6 4" fill="none" stroke="#c9d1e6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol></svg>
+<div id="loader"><svg><use href="#logo"/></svg></div>
+<canvas id="bg"></canvas>
+<header>
+ <a class="brand" href="#/"><svg><use href="#logo"/></svg><span>CYRAX <b>DEVELOPERS</b></span></a>
+ <button class="nb" id="menu" aria-label="Menu">☰</button>
+ <nav id="nav">
+  <a href="#/" data-nav="">Home</a><a href="#/tools" data-nav="tools">Arsenal</a><a href="#/join" data-nav="join">Join</a><a href="#/community" data-nav="community">Community</a><a href="#/track" data-nav="track">Track</a><a href="#/contact" data-nav="contact">Contact</a>
+  <button class="nb" id="theme" title="Toggle light/dark">◐</button><button class="nb" id="login">Member Login</button><button class="nb" id="chpw" hidden>Password</button>
+ </nav>
+</header>
+<main>
+<section class="page" id="p-home">
+ <div class="hero"><svg class="logo"><use href="#logo"/></svg>
+  <h1>CYRAX <span>DEVELOPERS</span></h1><p class="tag">Engineering Tomorrow, Today.</p>
+  <p class="lead" id="heroDesc">We are a team of passionate developers, programmers and digital innovators building powerful software, applications, bots and next-generation technology.</p>
+  <div class="cta"><a class="btn pri" href="#/join">Join Our Team</a><a class="btn" href="#/tools">Explore Our Projects</a><a class="btn" href="#/tools/Developer%20Utilities">Discover Our Tools</a></div></div>
+ <div class="wrap">
+  <div class="stats card" id="stats"></div>
+  <section class="sec"><h2>About CYRAX</h2><div class="grid"><div class="card" style="grid-column:1/-1"><p id="aboutText" style="font-size:1rem;color:var(--fg)">CYRAX DEVELOPERS is an organization of programmers, software engineers, Android APK creators, web developers, AI developers and bot developers. <b>Our mission:</b> bringing talented minds together to engineer the future of technology.</p></div>
+  <div class="card"><div class="ico">📱</div><h3>Android &amp; Apps</h3><p>Native Android applications and APK engineering.</p></div><div class="card"><div class="ico">🤖</div><h3>Bots &amp; Automation</h3><p>Telegram and WhatsApp bots at scale.</p></div><div class="card"><div class="ico">🧠</div><h3>Artificial Intelligence</h3><p>Intelligent assistants and AI-powered tools.</p></div><div class="card"><div class="ico">🌐</div><h3>Web &amp; Software</h3><p>Full-stack platforms, APIs and developer utilities.</p></div></div></section>
+  <section class="sec"><h2>Our Technologies</h2><div class="grid" id="stack" style="grid-template-columns:repeat(auto-fill,minmax(130px,1fr))"></div></section>
+  <section class="sec"><h2>Featured Projects</h2><div class="grid" id="featured"></div><p style="margin-top:1rem"><a class="btn" href="#/tools">View all tools &amp; technology →</a></p></section>
+  <section class="sec"><h2>Latest Announcements</h2><div class="grid" id="ann"></div></section>
+ </div>
+</section>
+
+<section class="page" id="p-tools"><div class="wrap"><h2>OUR TOOLS &amp; TECHNOLOGY</h2><div class="filters" id="filters"></div><div class="grid" id="tools"></div></div></section>
+
+<section class="page" id="p-join"><div class="wrap" style="max-width:900px"><h2>Join CYRAX DEVELOPERS</h2>
+ <p class="lead" style="margin-left:0">Apply to become a CYRAX developer. Your application is scored automatically as a screening signal, then verified by a real administrator with portfolio checks and practical challenges.</p>
+ <div id="joinClosed" class="msg err" hidden>Recruitment is currently closed.</div>
+ <form id="applyForm" novalidate>
+  <fieldset><legend>Personal Information</legend>
+   <label>Full name *<input name="full_name" required maxlength="80"></label><label>Username *<input name="username" required maxlength="30" pattern="[A-Za-z0-9_.\-]{3,30}"></label>
+   <label>Country *<input name="country" required></label><label>Age (optional — applicants must be 18+)<input name="age" type="number" min="18" max="99"></label>
+   <label>Email *<input name="email" type="email" required></label><label>WhatsApp number *<input name="whatsapp" placeholder="+263..." required></label>
+   <label>Profile picture<input name="avatar" type="file" accept="image/*"></label><label class="full">Short biography<textarea name="bio" maxlength="600"></textarea></label></fieldset>
+  <fieldset><legend>Development Information</legend>
+   <label>Programming languages * (comma separated)<input name="languages" required></label><label>Years of experience *<input name="experience_years" type="number" min="0" max="60" required></label>
+   <label class="full">Skills &amp; specializations<input name="skills"></label><label>Frameworks you understand<input name="frameworks"></label><label>Development tools you use<input name="tools"></label>
+   <label class="full">Previous experience<textarea name="previous_experience"></textarea></label>
+   <label>GitHub profile<input name="github" type="url" placeholder="https://github.com/you"></label><label>Portfolio website<input name="portfolio" type="url"></label><label>Telegram username<input name="telegram" placeholder="@username"></label></fieldset>
+  <fieldset><legend>Project Portfolio</legend><div id="projs" class="full" style="display:grid;gap:1rem"></div><div class="full"><button type="button" class="btn sm" id="addProj">+ Add another project</button></div></fieldset>
+  <fieldset><legend>Developer Assessment</legend><div class="full" id="quiz"></div>
+   <label class="full">Coding challenge: write a function that checks whether a string is a palindrome, ignoring case and non-alphanumeric characters. Include your code (any language) and its time complexity.<textarea name="challenge" style="min-height:160px;font-family:monospace"></textarea></label></fieldset>
+  <label style="display:flex;gap:.6rem;align-items:center"><input type="checkbox" id="consent" style="width:auto"> <span>I agree to the <a href="#" data-dlg="terms">Terms</a> and <a href="#" data-dlg="privacy">Privacy Policy</a>.</span></label>
+  <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+  <div id="applyMsg"></div><button class="btn pri" id="applyBtn" type="submit">Submit Application</button>
+ </form><div id="applyDone" hidden></div></div></section>
+
+<section class="page" id="p-track"><div class="wrap" style="max-width:760px"><h2>Track Your Application</h2>
+ <form id="trackForm"><fieldset><label>Reference number<input name="ref" placeholder="CYX-XXXXXXXXXX" required></label><label>Email used to apply<input name="email" type="email" required></label><div class="full"><button class="btn pri" type="submit">Check Status</button></div></fieldset></form><div id="trackOut"></div></div></section>
+
+<section class="page" id="p-community"><div class="wrap"><h2>CYRAX Community</h2>
+ <p class="lead" style="margin-left:0">Developer discussions, collaborations, achievements, technology news and project showcases. Posting is for approved members.</p>
+ <div class="card" id="postBox" hidden><form id="postForm"><label>Type<select name="kind"><option value="discussion">Discussion</option><option value="collaboration">Project collaboration</option><option value="achievement">Achievement</option><option value="showcase">Showcase my work</option><option value="news">Technology news</option></select></label><label>Title<input name="title" required maxlength="120"></label><label>Message<textarea name="body" required></textarea></label><label>Link (optional)<input name="link" type="url"></label><div id="postMsg"></div><button class="btn pri" type="submit">Publish</button></form></div>
+ <div class="filters" id="pf" style="margin-top:1rem"></div><div class="grid" id="posts"></div>
+ <section class="sec"><h2>Team Members</h2><div class="grid" id="team"></div></section></div></section>
+
+<section class="page" id="p-contact"><div class="wrap" style="max-width:760px"><h2>Contact</h2>
+ <p class="lead" style="margin-left:0">Reach the team through the form, GitHub or Telegram. Recruitment contact details are shared only with shortlisted applicants.</p>
+ <form id="contactForm"><fieldset><label>Name<input name="name" required></label><label>Email<input name="email" type="email" required></label><label class="full">Message<textarea name="body" required minlength="10"></textarea></label><input class="hp" name="website" tabindex="-1" autocomplete="off"><div class="full" id="contactMsg"></div><div class="full"><button class="btn pri" type="submit">Send Message</button></div></fieldset></form>
+ <div class="links"><a class="btn" href="https://github.com/whitekid-tech" target="_blank" rel="noopener noreferrer">GitHub</a><a class="btn" href="https://t.me/whitekid01" target="_blank" rel="noopener noreferrer">Telegram</a></div></div></section>
+
+<section class="page" id="p-404"><div class="nf"><h1>404</h1><p class="lead">This page drifted out of the network.</p><a class="btn pri" href="#/">Return Home</a></div></section>
+</main>
+<footer><div class="fg"><div><a class="brand" href="#/"><svg><use href="#logo"/></svg><span>CYRAX <b>DEVELOPERS</b></span></a><small>Engineering Tomorrow, Today.<br>Bringing talented minds together to engineer the future of technology.</small></div>
+ <div><b>Explore</b><a href="#/tools">Tools &amp; Technology</a><a href="#/join">Join the Team</a><a href="#/community">Community</a><a href="#/track">Track Application</a></div>
+ <div><b>Connect</b><a href="https://github.com/whitekid-tech" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://t.me/whitekid01" target="_blank" rel="noopener noreferrer">Telegram</a><a href="#/contact">Contact</a></div>
+ <div><b>Legal</b><a href="#" data-dlg="privacy">Privacy Policy</a><a href="#" data-dlg="terms">Terms &amp; Conditions</a><a href="admin.html">Admin</a></div></div>
+ <p style="text-align:center;margin-top:1.5rem"><small>© <span id="yr"></span> CYRAX DEVELOPERS. All rights reserved.</small></p></footer>
+
+<dialog id="privacy"><h3>Privacy Policy</h3><p>We collect the information you submit (identity, contact, portfolio, assessment answers and uploaded images) only to evaluate your application and communicate with you.</p><p>Data is stored on the CYRAX server accessible only to CYRAX administrators. We do not sell your data. Your WhatsApp number is never shown publicly. You may request deletion by contacting us with your reference number.</p><p>Applicants must be 18 or older. The site stores your theme preference and, if you sign in, an authentication session in your browser.</p><form method="dialog"><button class="btn">Close</button></form></dialog>
+<dialog id="terms"><h3>Terms &amp; Conditions</h3><p>By applying you confirm the information is accurate and that you own or are authorized to present the projects you submit. False claims lead to rejection.</p><p>Automated scores are a screening signal only. Acceptance depends on portfolio verification, practical challenges and administrator review; submitting an application does not guarantee membership.</p><p>Members must post lawful, respectful content. CYRAX may remove content or access at its discretion.</p><form method="dialog"><button class="btn">Close</button></form></dialog>
+<dialog id="auth"><h3>Member Login</h3><form id="authForm"><label>Email<input name="email" type="email" required></label><label>Password<input name="password" type="password" required></label><div id="authMsg"></div><button class="btn pri" type="submit">Sign In</button><button class="btn sm" type="button" id="forgot">Forgot password?</button></form><p>Accounts are created for approved members by the founder.</p><form method="dialog"><button class="btn sm">Close</button></form></dialog>
+<dialog id="pw"><h3>Change password</h3><form id="pwForm"><label>Current password<input name="c" type="password" required></label><label>New password (min 8)<input name="p" type="password" minlength="8" required></label><div id="pwMsg"></div><button class="btn pri" type="submit">Save password</button></form><form method="dialog"><button class="btn sm">Close</button></form></dialog>
+<script src="js/app.js"></script>
+</body></html>

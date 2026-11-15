@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="en" data-theme="dark"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>CYRAX Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Orbitron:wght@600;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="css/style.css"></head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#00e5ff"/><stop offset=".55" stop-color="#2d8cff"/><stop offset="1" stop-color="#8a5cff"/></linearGradient></defs><symbol id="logo" viewBox="0 0 64 64"><path d="M32 3 57 17.5v29L32 61 7 46.5v-29z" fill="none" stroke="url(#lg)" stroke-width="3"/><path d="M42 22a15 15 0 1 0 0 20" fill="none" stroke="url(#lg)" stroke-width="5" stroke-linecap="round"/><path d="M30 28l6 4-6 4" fill="none" stroke="#c9d1e6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol></svg>
+<header><a class="brand" href="/"><svg><use href="#logo"/></svg><span>CYRAX <b>ADMIN</b></span></a><nav style="display:flex"><a href="/">← Site</a><button class="nb" id="out" hidden>Sign out</button></nav></header>
+<div id="login" class="wrap" style="max-width:420px"><h2>Administrator Login</h2><form id="lf"><label>Email<input name="e" type="email" required></label><label>Password<input name="p" type="password" required></label><div id="lm"></div><button class="btn pri">Sign in</button></form></div>
+<div class="adm" id="app" hidden><div class="side" id="side"></div><div id="ad"></div></div>
+<dialog id="ed"><h3 id="edt"></h3><form id="edf"></form></dialog>
+<script src="js/admin.js"></script>
+</body></html>
