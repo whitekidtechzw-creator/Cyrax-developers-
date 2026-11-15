@@ -9,10 +9,11 @@ try {
   }
 } catch {}
 
-const db = require('./server/db');
-const { json, ensureAdmin } = require('./server/util');
+const db = require('./db');
+const { json, ensureAdmin } = require('./util');
 const ROUTES = { login: 'login', public: 'public', apply: 'apply', status: 'status', member: 'member', admin: 'admin' };
-const PUBLIC = path.join(__dirname, 'public');
+// Everything is in one folder, so ONLY these exact files are ever served to the browser.
+const PAGES = { '/': 'index.html', '/index.html': 'index.html', '/admin': 'admin.html', '/admin.html': 'admin.html', '/robots.txt': 'robots.txt', '/style.css': 'style.css', '/app.js': 'app.js', '/admin-ui.js': 'admin-ui.js' };
 const MIME = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.ico': 'image/x-icon', '.txt': 'text/plain; charset=utf-8', '.webp': 'image/webp' };
 const SEC = {
   'X-Frame-Options': 'DENY', 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'strict-origin-when-cross-origin',
@@ -38,7 +39,7 @@ function sendFile(req, res, file, extra = {}) {
   });
 }
 function notFound(req, res) {
-  const f = path.join(PUBLIC, '404.html');
+  const f = path.join(__dirname, '404.html');
   fs.readFile(f, (e, d) => { res.writeHead(404, headers(req, { 'Content-Type': 'text/html; charset=utf-8' })); res.end(req.method === 'HEAD' ? undefined : (e ? 'Not found' : d)); });
 }
 async function api(req, res, name) {
@@ -46,7 +47,7 @@ async function api(req, res, name) {
   try {
     const raw = req.method === 'POST' ? await readBody(req, name === 'apply' ? 14e6 : 2e5) : '';
     const xff = (req.headers['x-forwarded-for'] || '').split(',')[0].trim();
-    const handler = require('./server/routes/' + ROUTES[name]);
+    const handler = require('./api-' + ROUTES[name]);
     send(await handler({ method: req.method, headers: req.headers, body: raw, ip: xff || req.socket.remoteAddress || 'unknown' }));
   } catch (e) {
     if (e.code === 413) return send(json(413, { error: 'Upload too large. Use smaller images.' }));
@@ -67,10 +68,9 @@ const server = http.createServer((req, res) => {
     if (!f.startsWith(db.UPLOADS + path.sep)) return notFound(req, res);
     return sendFile(req, res, f, { 'Cache-Control': 'public, max-age=31536000, immutable' });
   }
-  if (pathname === '/') pathname = '/index.html'; else if (pathname === '/admin') pathname = '/admin.html';
-  const f = path.join(PUBLIC, pathname);
-  if (!f.startsWith(PUBLIC + path.sep)) return notFound(req, res);
-  sendFile(req, res, f, { 'Cache-Control': 'no-cache' });
+  const page = Object.hasOwn(PAGES, pathname) ? PAGES[pathname] : null;
+  if (!page) return notFound(req, res);
+  sendFile(req, res, path.join(__dirname, page), { 'Cache-Control': 'no-cache' });
 });
 
 (async () => {

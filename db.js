@@ -1,6 +1,6 @@
 // Tiny file-based database: everything lives in <DATA_DIR>/db.json (atomic writes + daily backups).
 const fs = require('fs'), path = require('path'), crypto = require('crypto');
-const DATA_DIR = path.resolve(process.env.DATA_DIR || path.join(__dirname, '..', 'data'));
+const DATA_DIR = path.resolve(process.env.DATA_DIR || path.join(__dirname, 'data'));
 const UPLOADS = path.join(DATA_DIR, 'uploads'), BACKUPS = path.join(DATA_DIR, 'backups'), FILE = path.join(DATA_DIR, 'db.json');
 fs.mkdirSync(UPLOADS, { recursive: true }); fs.mkdirSync(BACKUPS, { recursive: true });
 
